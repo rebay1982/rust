@@ -1,10 +1,12 @@
 #![allow(dead_code)]
+use std::mem;
 
 fn main()
 {
   //structures();
   //enums();
-  option();
+  //option();
+  array();
 }
 
 // Enumerations
@@ -35,6 +37,59 @@ fn enums()
     //   Color::CmykColor.yellow,
     //   Color::CmykColor.black)
     //_ => println!("Some other colour")
+  }
+}
+
+fn array()
+{
+  // :[i32;5] is redundant.  We can do without it.
+  let mut a:[i32; 5] = [1, 2, 3, 4, 5];
+
+  println!("a has {} elements, first is {}",
+    a.len(), a[0]);
+
+  a[0] = 321;
+
+  println!("a at [0] is {}", a[0]);
+  println!("{:?}", a);
+
+  if a != [1,2,3,4,5]
+  {
+    println!("Does not match.");
+  }
+
+  if a == [321,2,3,4,5]
+  {
+    println!("Match.");
+  }
+
+  let b = [1u8; 10];
+
+  for i in 0..b.len()
+  {
+    println!("b array at index {} == {}", i, b[i]);
+
+  }
+
+  println!("b took up {} bytes", mem::size_of_val(&b));
+
+  let mtx:[[f32;3]; 2] =
+  [
+    [1.0, 0.0, 0.0],
+    [0.0, 2.0, 0.0]
+  ];
+
+  println!("Mtx {:?}", mtx);
+
+  for i in 0..mtx.len()
+  {
+    for j in 0..mtx[i].len()
+    {
+      if i == j
+      {
+        println!("mtx[{}][{}] == {}", i, j, mtx[i][j]);
+      }
+    }
   }
 }
 
