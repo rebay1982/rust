@@ -6,7 +6,8 @@ fn main()
   //structures();
   //enums();
   //option();
-  array();
+  //array();
+  vector();
 }
 
 // Enumerations
@@ -37,6 +38,42 @@ fn enums()
     //   Color::CmykColor.yellow,
     //   Color::CmykColor.black)
     //_ => println!("Some other colour")
+  }
+}
+
+fn vector()
+{
+  let mut a = Vec::new();
+  a.push(1);
+  a.push(2);
+  a.push(3);
+  println!("a = {:?}", a);
+
+
+  a.push(44);
+  println!("a = {:?}", a);
+
+  let idx:usize = 6;
+
+  match a.get(idx)
+  {
+    Some(x) => println!("a[{}] == {}", idx, x),
+    None => println!("No such element at {}", idx)
+  }
+
+  // Iterate through the vector
+  for x in &a
+  {
+    println!("{}", x);
+  }
+
+  let last_element = a.pop();   // Get an option
+
+  println!("Last element is {:?}, a is {:?}", last_element, a);
+
+  while let Some(x) = a.pop()
+  {
+    println!("{}", x);
   }
 }
 
